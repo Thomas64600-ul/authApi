@@ -5,9 +5,6 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
 import deleteUserCron from "./middlewares/deleteUser.js";
 import auditDependencies from './middlewares/auditDependencies.js'
-import helmet from 'helmet';
-import cors from 'cors';
-
 dotenv.config();
 
 const app = express();
@@ -16,8 +13,6 @@ connectDB();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(helmet());
-app.use(cors());
 
 // Démarre le cron
 deleteUserCron.start();
