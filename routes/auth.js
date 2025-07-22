@@ -6,13 +6,12 @@ import { validate } from '../middlewares/validate.js';
 
 const router = express.Router();
 
-router.post('/register', register);
 router.post('/login', login);
 router.get('/verify/:token', verifyEmail);
 
 router.post('/password-reset-request', requestPasswordReset);
 router.post('/reset-password/:token', resetPassword);
-router.post('/', validate(createUserSchema));
+router.post('/register', validate(createUserSchema), register);
 
 router.get('/user-profile', protect, (req, res) => {
   res.json({ message: `Bienvenue ${req.user.name}` });
