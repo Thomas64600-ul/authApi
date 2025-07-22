@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   isVerified: { type: Boolean, default: false },
   role: { type: String, enum: rolesEnum, default: 'user' },
-  avatar: { type: String },
   resetPasswordToken: { type: String }, // token hashé pour reset password
   resetPasswordExpire: { type: Date },  // date d'expiration du token
 }, { timestamps: true });

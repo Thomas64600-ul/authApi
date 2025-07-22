@@ -26,7 +26,7 @@ export const createUserSchema = Joi.object({
     }),
   password: Joi.string()
     .min(6)
-    .required()
+    .required() 
     .messages({
       'string.min': 'Le mot de passe doit contenir au moins 6 caractères.',
       'string.empty': 'Le mot de passe est requis.',
