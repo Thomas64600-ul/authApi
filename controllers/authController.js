@@ -270,12 +270,10 @@ export async function logout(req, res) {
       secure: process.env.NODE_ENV === "production",
       sameSite: "Strict",
     });
-    res.status(200).json({message: "Deconnecté avec succès"});
-    
+
+    res.status(200).json({ message: "Déconnecté avec succès" });
   } catch (error) {
-    console.error(("Erreur de déconnexion:", error));
-    res.status(500).json({message: "Erreur lors de la déconnexion"});
-    
-    
+    console.error("Erreur de déconnexion :", error);
+    res.status(500).json({ message: "Erreur lors de la déconnexion" });
   }
 }
