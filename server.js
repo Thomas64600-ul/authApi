@@ -5,6 +5,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
 import deleteUserCron from "./middlewares/deleteUser.js";
 import auditDependencies from './middlewares/auditDependencies.js'
+import { limiter } from './middlewares/rateLimiter.js';
 dotenv.config();
 
 const app = express();
@@ -17,7 +18,7 @@ app.use(cookieParser());
 // Démarre le cron
 deleteUserCron.start();
 auditDependencies.start()
-
+app.use(limiter)
 app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
